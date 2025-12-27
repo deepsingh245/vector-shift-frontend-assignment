@@ -1,0 +1,37 @@
+# General
+.DS_Store
+Thumbs.db
+*.log
+
+# Frontend (Node.js/React)
+frontend/node_modules/
+frontend/build/
+frontend/dist/
+frontend/coverage/
+frontend/.env
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# Backend (Python/FastAPI)
+backend/__pycache__/
+backend/*.py[cod]
+backend/*$py.class
+backend/venv/
+backend/.venv/
+backend/env/
+backend/.env
+backend/.pytest_cache/
+backend/htmlcov/
+backend/.coverage
+backend/celerybeat-schedule
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
