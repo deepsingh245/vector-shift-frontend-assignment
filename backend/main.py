@@ -49,7 +49,7 @@ def is_dag(nodes, edges) -> bool:
             if indegree[neighbor] == 0:
                 queue.append(neighbor)
 
-    # If we visited all nodes, it's a DAG (no cycles)
+    # If we visited all nodes, it's a DAG
     return visited_count == len(node_ids)
 
 @app.post("/pipelines/parse")
