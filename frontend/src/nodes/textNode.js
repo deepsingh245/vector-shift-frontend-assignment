@@ -21,17 +21,17 @@ export const TextNode = ({ id, data }) => {
   useEffect(() => {
     const regex = /{{([a-zA-Z_$][a-zA-Z0-9_$]*)}}/g;
     let match;
-    const variables = new Set();
+    const variables = [];
     while ((match = regex.exec(currText)) !== null) {
-      variables.add(match[1]);
+      variables.push(match[1]);
     }
 
-    // Generate handle objects
-    const variableHandles = Array.from(variables).map((variable, index) => ({
+    // Generate handle objects with stable index-based IDs
+    const variableHandles = variables.map((variable, index) => ({
       type: 'target',
       position: Position.Left,
-      id: `${id}-${variable}`,
-      style: { top: `${(index + 1) * 20 + 50}px` } // Simple offset strategy
+      id: `${id}-input-${index}`,
+      style: { top: `${(index + 1) * 25 + 40}px` } // Simple offset strategy
     }));
 
     // Add standard output handle
