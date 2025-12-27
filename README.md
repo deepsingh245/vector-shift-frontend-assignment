@@ -23,22 +23,28 @@ This application is a modern, modular visual pipeline builder that allows users 
 The application follows a decoupled client-server architecture:
 
 ```mermaid
-graph TD
-    Client[Frontend (React)] -->|JSON| API[Backend (FastAPI)]
+graph LR
+    Client["Frontend React"]
+    API["Backend FastAPI"]
+    
+    Store["Zustand Store"]
+    Nodes["Nodes & Edges"]
+    UI["ReactFlow Canvas"]
+    Submit["Submit Handler"]
+    
+    ParseEP["parse endpoint"]
+    Cycles["Cycle Detection"]
+    Response["Validation Result"]
+    
+    Client -->|JSON| API
     API -->|Response| Client
     
-    subgraph Frontend Logic
-        Store[Zustand Store] -->|State Management| Nodes[Nodes]
-        Store --> Edges[Edges]
-        UI[ReactFlow Canvas] -->|Renders| Store
-        Submit[Submit Handler] -->|POST /pipelines/parse| API
-    end
-    
-    subgraph Backend Logic
-        API --> ParseEndpoint[/pipelines/parse]
-        ParseEndpoint --> Cycles[Cycle Detection via Kahn's Algo]
-        Cycles --> Response[Validation Result]
-    end
+    Store --> Nodes
+    UI --> Store
+    Submit --> API
+    API --> ParseEP
+    ParseEP --> Cycles
+    Cycles --> Response
 ```
 
 ## 🛠️ Project Structure
