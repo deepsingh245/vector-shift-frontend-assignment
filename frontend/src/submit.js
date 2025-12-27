@@ -31,17 +31,8 @@ export const SubmitButton = () => {
             }
 
             const data = await response.json();
-
-            // Format the message
             const message = `Nodes: ${data.num_nodes} | Edges: ${data.num_edges} | DAG: ${data.is_dag ? 'Yes' : 'No'}`;
-
-            // Ideally use Snackbar, but since SubmitButton might not be top-level, we can try to use it locally or just alert if snackbar positioning is tricky without a portal.
-            // Using alert as requested "create an alert" (could mean window.alert or custom UI).
-            // Let's try to use the Snackbar we just built for a better UI, rendered right here.
             setSnackbar({ isVisible: true, message, type: 'success' });
-
-            // Also showing a window.alert as a fallback or explicit request satisfaction if UI is missed
-            // window.alert(message); 
 
         } catch (error) {
             console.error(error);
