@@ -35,3 +35,4 @@ backend/celerybeat-schedule
 .idea/
 *.swp
 *.swo
+*.pdf

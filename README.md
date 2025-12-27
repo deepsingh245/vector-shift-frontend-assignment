@@ -24,7 +24,8 @@ The application follows a decoupled client-server architecture:
 
 ```mermaid
 graph TD
-    Client[Frontend (React)] <-->|JSON| API[Backend (FastAPI)]
+    Client[Frontend (React)] -->|JSON| API[Backend (FastAPI)]
+    API -->|Response| Client
     
     subgraph Frontend Logic
         Store[Zustand Store] -->|State Management| Nodes[Nodes]
